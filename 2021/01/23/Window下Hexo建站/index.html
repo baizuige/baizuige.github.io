@@ -20,6 +20,8 @@
   <meta property="og:img" content="/img/baizuige.jpg">
   
   
+  <meta property="og:img" content="Window下Hexo建站指南">
+  
   
   <meta property="og:type" content="article">
   <meta property="og:article:published_time" content="2021-01-23">
@@ -216,9 +218,14 @@
       <span>2021-01-23</span>
     </time>
     
+    <span class="dot"></span>
+    
+    <a href="/categories/笔记/" class="post-meta-link">笔记</a>
+    
+    
     
     <span class="dot"></span>
-    <span>524 字</span>
+    <span>525 字</span>
     
   </div>
   
@@ -246,18 +253,20 @@
 <h2 id="实操部分"><a href="#实操部分" class="headerlink" title="实操部分"></a>实操部分</h2><p>安装完git后鼠标右键可以看到<code>Git Bash Here</code>操作，打开后可以使用一些linux的命令；选择自己想要存放博客文件的文件夹内，执行该操作，之后的操作都在这里执行。</p>
 <ol>
 <li><p>安装并切换阿里镜像</p>
-<pre class="highlight"><span class="line"># npm install cnpm -g --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line"># npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></li>
+<pre class="line-numbers language-none"><code class="language-none"># npm install cnpm -g --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org
+# npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>安装hexo</p>
-<pre class="highlight"><span class="line"># npm install hexo-cli -g</span><br></pre></li>
+<pre class="line-numbers language-none"><code class="language-none"># npm install hexo-cli -g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>初始化一个hexo博客</p>
-<pre class="highlight"><span class="line"># hexo init</span><br></pre>
+<pre class="line-numbers language-none"><code class="language-none"># hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>此时博客已经成功生成，可以使用<code>hexo s</code>在本地预览</p>
 </li>
 </ol>
 <h2 id="部署远端"><a href="#部署远端" class="headerlink" title="部署远端"></a>部署远端</h2><p>这里推荐部署在github上，免费且方便；也可以部署在gitee上，同样是免费的还是在git命令行中执行以下操作</p>
 <ol>
 <li><p>Git初始化配置</p>
-<pre class="highlight"><span class="line"># git config --global user.name &quot;填写自己github的用户名&quot;</span><br><span class="line"># git config --global user.email 填写绑定的邮箱号</span><br></pre></li>
+<pre class="line-numbers language-none"><code class="language-none"># git config --global user.name &quot;填写自己github的用户名&quot;
+# git config --global user.email 填写绑定的邮箱号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li><p>进入github，创建一个以”自己用户名.github.io”为名称的仓库</p>
 </li>
 <li><p>复制仓库地址，HTTPS和SSH地址都行</p>
@@ -267,11 +276,16 @@
 <li><p>在博客文件夹中打开_config.yml文件</p>
 </li>
 <li><p>翻到最后，输入以下代码，其中repo后输入刚才复制的地址</p>
-<pre class="highlight"><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: 仓库地址</span><br><span class="line">  branch: main</span><br></pre></li>
+<pre class="line-numbers language-none"><code class="language-none"># Deployment
+## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;one-command-deployment
+deploy:
+  type: git
+  repo: 仓库地址
+  branch: main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 <li><p>回到git命令行，输入<code>hexo d</code>即可将博客部署到远端；部署时可能会出现错误<code>ERROR Deployer not found: git</code> 解决办法是安装hexo-deployer-git插件</p>
-<pre class="highlight"><span class="line"># npm install --save hexo-deployer-git</span><br></pre></li>
+<pre class="line-numbers language-none"><code class="language-none"># npm install --save hexo-deployer-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>回到github仓库，在设置中找到GitHub Pages，将Source中的Branch改为main后保存(save)，之后就可以在”自己用户名.github.io”的网址下访问博客</p>
 </li>
 </ol>
@@ -330,7 +344,7 @@
 <p class="author-description">好好学习，天天向上</p>
 <div class="author-message">
   <a class="author-posts-count" href="/archives">
-    <span>2</span>
+    <span>3</span>
     <span>文章</span>
   </a>
   <a class="author-categories-count" href="/categories">
@@ -338,7 +352,7 @@
     <span>分类</span>
   </a>
   <a class="author-tags-count" href="/tags">
-    <span>3</span>
+    <span>4</span>
     <span>标签</span>
   </a>
 </div>
@@ -386,7 +400,7 @@
       <a href="/categories/笔记">
         <div class="categories-list-item">
           笔记
-          <span class="categories-list-item-badge">1</span>
+          <span class="categories-list-item-badge">3</span>
         </div>
       </a>
     
@@ -399,11 +413,13 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>热门标签</div>
   <div class="tags-list">
     
+    <a href="\tags\Javascript" title="Javascript"><div class="tags-list-item">Javascript</div></a>
+    
+    <a href="\tags\闭包" title="闭包"><div class="tags-list-item">闭包</div></a>
+    
     <a href="\tags\Window" title="Window"><div class="tags-list-item">Window</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
-    
-    <a href="\tags\Javascript" title="Javascript"><div class="tags-list-item">Javascript</div></a>
     
   </div>
 </div>
@@ -426,6 +442,11 @@
     <div class="recent-posts-card">
   <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>最近文章</div>
   <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2021-01-24</div>
+        <a href="/2021/01/24/作用域和闭包/"><div class="recent-posts-item-content">作用域和闭包</div></a>
+      </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2021-01-23</div>
