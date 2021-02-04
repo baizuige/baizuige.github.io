@@ -25,7 +25,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:published_time" content="2021-01-25">
-  <meta property="og:article:modified_time" content="2021-01-25">
+  <meta property="og:article:modified_time" content="2021-02-04">
   <meta property="og:article:author" content="白嘴鸽">
   
   
@@ -233,7 +233,7 @@
     
     
     <span class="dot"></span>
-    <span>1k 字</span>
+    <span>551 字</span>
     
   </div>
   
@@ -254,56 +254,15 @@
   
   </header>
   <div id="section" class="post-content">
-    <blockquote>
-<ul>
-<li>本文中的示例将使用<code>let</code>和<code>const</code>进行变量和常量的声明。</li>
-<li>对于<code>var</code>这种过去式，个人不推荐使用。</li>
-<li>此外，示例代码默认是在严格模式下执行。</li>
-</ul>
-</blockquote>
-<p>在解释闭包前，先要了解几个概念：什么是作用域，什么是嵌套函数，什么是垃圾回收。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域就是当前代码的执行上下文。可以在全局作用域下创建多个子作用域，子作用域中的变量及函数无法在外部作用域被访问。</p>
-<p>在ES6之前，JavaScript由于<code>var</code>的特性，表面上没有块级作用域（<code>&#123;...&#125;</code>）的相关功能，但JavaScript有着完好的函数作用域（即：在函数中的变量等属性无法被外界访问），因此可以用立即执行函数（<code>(function()&#123;...&#125;)()</code>）来模拟块级作用域。</p>
-<p>ES6引入了新的<code>let</code>和<code>const</code>关键字来声明变量和常量。let关键字可以将变量绑定到所在的任意作用域中（通常是{ .. }内部）。换句话说，let为其声明的变量隐式地劫持了所在的块作用域。这也就使JavaScript真正有了块作用域。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
-	<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">"HelloWorld!"</span><span class="token punctuation">;</span>
-	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//HelloWorld!</span>
-<span class="token punctuation">&#125;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//ReferenceError: message is not defined</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h2><p>当一个函数是在另一个函数中创建的时，那么该函数就被称为“嵌套”的。在JavaScript中很容易实现这一点。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">sayHiBye</span><span class="token punctuation">(</span><span class="token parameter">firstName<span class="token punctuation">,</span> lastName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">function</span> <span class="token function">getFullName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> firstName <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> lastName<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">"Hello, "</span> <span class="token operator">+</span> <span class="token function">getFullName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Hello, bai ge</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">"Bye, "</span> <span class="token operator">+</span> <span class="token function">getFullName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Bye, bai ge</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">sayHiBye</span><span class="token punctuation">(</span><span class="token string">"bai"</span><span class="token punctuation">,</span><span class="token string">"ge"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此外，还可以将嵌套函数作为返回值赋值给外部变量。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"HelloWorld"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> hi <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//HelloWorld</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>JavaScript会通过自动内存管理实现内存分配和闲置资源回收。基本思路很简单：确定哪个变量不会再使用，然后释放它占有的内存。</p>
-<p>通常来说，函数中的局部变量会在函数执行时存在。函数内部使用了变量，然后退出，此时就不再需要这个局部变量了，它占用的内存可以释放。</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包是指内部函数总是可以访问其所在的外部函数中声明的变量和参数，即使在其外部函数被返回（寿命终结）了之后。在 JavaScript 中，所有函数都是天生闭包的。</p>
-<p>JavaScript 中的函数会自动通过隐藏的 <code>[[Environment]]</code> 属性记住创建它们的位置，所以它们都可以访问外部变量。从技术上讲：所有函数都有名为 <code>[[Environment]]</code> 的隐藏属性，该属性保存了对创建该函数的词法环境的引用。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> bar<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">let</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//2 这就是闭包的效果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>函数bar()的词法作用域能够访问foo()的内部作用域。然后将bar()函数本身当作一个值类型进行传递。在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz()，实际上只是通过不同的标识符引用调用了内部的函数bar()。在这个例子中，它在自己定义的词法作用域以外的地方执行。</p>
-<p>在foo()执行后，通常会期待foo()的整个内部作用域都被销毁。但是闭包可以阻止这件事情的发生。由于bar()所声明的位置，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以供bar()在之后任何时间进行引用。bar()依然持有对该作用域的引用，而这个引用就叫作闭包。</p>
-<p>因此，在几微秒之后变量baz被实际调用（调用内部函数bar），不出意外它可以访问定义时的词法作用域，因此它也可以如预期般访问变量a。这个函数在定义时的词法作用域以外的地方被调用。闭包使得函数可以继续访问定义时的词法作用域。</p>
+    <p><em>尝试使用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/50895393?fr=aladdin">费曼学习法</a>，所以不会说一些专业术语，都是我自己对作用域和闭包的理解，更专业的解释可以看《你不知道的JavaScript（上卷）》</em></p>
+<p>一个一个房间，大的房间中可以包含小的房间，但有一个最大的房间，也就是全局作用域。</p>
+<p>小房间的人们如果想看书，可以先在自己的房间中找找，如果找不到也可以去大房间中找，直到最大的那个房间，但要注意，不能跑到大房间中其他人的小房间找。 </p>
+<p>如果有一本书，最大的房间也有，自己顺着上面说的那条路找上去也可以找到另外一本，这时虽然说可以不用到最大的房间找，但如果就是想看那本，就可以通过<code>window.var</code>直接从最大的房间中找，也只有最大房间中的书可以这样找。</p>
+<p>找到书后可以在书中随便做笔记了，但之后要立刻还回远处，供别人使用，但书的质量就很难保证了。</p>
+<p>对于用不同方式编写的书，会有不同的效果，<code>var</code>型书籍除非在函数造的房间中编写，否则都会自动算作是最大房间的书；<code>let</code>和<code>const</code>型书籍在编写后就只属于自己小房间了。</p>
+<p>当一个小房子中不再想看书，不再有什么活动时，就会被拆除，包括房间中的所有东西。当然，小房间里的活动也算大房间的。 要注意的是，函数造的房间一般不会被拆除，因为有钥匙的人就可以进去，除非之后真的没有人想到这房间里了。</p>
+<p>现在可以停下来想想，上面的这些机制会有什么奇妙的效果！</p>
+<p>由于进入函数房间只需要有钥匙就可以，那么当配一把钥匙拿到外面的时候。外面的人就可以通过钥匙直接进到函数房间，而在函数房间就可以自由的去大房间找书，这就是闭包。</p>
 
   </div>
   <div>
@@ -340,7 +299,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <div class="card card-content toc-card" id="mobiletoc">
   <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-text">嵌套函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li></ol>
+
 </div></main>
           <aside class="left-column">
             
@@ -395,7 +354,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <article class="display-when-two-columns spacer">
     <div class="card card-content toc-card">
       <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-text">嵌套函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li></ol>
+
     </div>
   </article>
   
@@ -423,11 +382,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
     
     <a href="\tags\JavaScript" title="JavaScript"><div class="tags-list-item">JavaScript</div></a>
     
-    <a href="\tags\Window" title="Window"><div class="tags-list-item">Window</div></a>
+    <a href="\tags\闭包" title="闭包"><div class="tags-list-item">闭包</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
-    <a href="\tags\闭包" title="闭包"><div class="tags-list-item">闭包</div></a>
+    <a href="\tags\Window" title="Window"><div class="tags-list-item">Window</div></a>
     
   </div>
 </div>
@@ -442,7 +401,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   
   <article class="card card-content toc-card">
     <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
-<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-text">嵌套函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-text">垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-text">闭包</span></a></li></ol>
+
   </article>
   
   
