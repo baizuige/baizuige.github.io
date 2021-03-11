@@ -8,16 +8,30 @@
   <meta name="theme-color" content="#fff" id="theme-color">
   <meta name="description" content="白嘴鸽的博客">
   <link rel="icon" href="/img/baizuige.jpg">
-  <title>标签</title>
+  <title>状态码</title>
   
   
-  <meta property="og:title" content="标签">
+  <meta property="og:title" content="状态码">
   
   
-  <meta property="og:url" content="https://baizuige.github.io/tags/Hexo/index.html">
+  <meta property="og:url" content="https://baizuige.github.io/2021/03/11/%E5%8D%81%E5%9B%9B%E7%A7%8D%E5%85%B7%E6%9C%89%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81/index.html">
   
   
   <meta property="og:img" content="/img/baizuige.jpg">
+  
+  
+  <meta property="og:img" content="十四种具有代表性的状态码">
+  
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:published_time" content="2021-03-11">
+  <meta property="og:article:modified_time" content="2021-03-11">
+  <meta property="og:article:author" content="白嘴鸽">
+  
+  
+  <meta property="og:article:tag" content="状态码">
+  
+  <meta property="og:article:tag" content="网络协议">
   
   
   
@@ -108,6 +122,10 @@
 
   
   
+<link rel="stylesheet" href="/js/lib/lightbox/baguetteBox.min.css">
+
+  
+  
   
   
   
@@ -188,25 +206,105 @@
       <div class="container">
         <div class="columns">
           <main class="main-column">
-<div class="card card-content tag-page-card">
-  <div class="tags-page-title">标签&nbsp-&nbspHexo</div>
-</div>
-<div class="archive-timeline">
-  
-  
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      状态码
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2021-03-11T14:10:24.000Z">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2021-03-11</span>
+    </time>
     
-      <div class="archive-timeline-tag"><span>2021</span></div>
+    <span class="dot"></span>
+    
+    <a href="/categories/笔记/" class="post-meta-link">笔记</a>
+    
+    
+    
+    <span class="dot"></span>
+    <span>433 字</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
       
-    
-    <div class="archive-timeline-item">
-      <div class="archive-timeline-post">
-        <div class="card card-content">
-          <div class="archive-timeline-post-date">2021-01-23</div>
-          <div class="archive-timeline-post-content"><a href="/2021/01/23/Window下Hexo建站/" class="archive-timeline-post-item">Window下Hexo建站</a></div>
-        </div>
-      </div>
+      
+        <a href="/tags/状态码/" class="post-meta-link">状态码</a>
+      
+      
+      <span class="dot"></span>
+      
+        <a href="/tags/网络协议/" class="post-meta-link">网络协议</a>
+      
     </div>
+  </div>
   
+  </header>
+  <div id="section" class="post-content">
+    <h2 id="2XX-成功"><a href="#2XX-成功" class="headerlink" title="2XX 成功"></a>2XX 成功</h2><ul>
+<li><strong>200 OK</strong> 表示从客户端发来的请求在服务器端被正常处理</li>
+<li><strong>204 No Content</strong> 表示请求已成功处理，但返回的响应报文中不含实体的主体部分</li>
+<li><strong>206 Partial Content</strong> 表示客户端进行了范围请求，服务器也成功执行了这部分的GET请求，响应报文中包含由Content-Range指定范围的实体内容</li>
+</ul>
+<h2 id="3XX-重定向"><a href="#3XX-重定向" class="headerlink" title="3XX 重定向"></a>3XX 重定向</h2><ul>
+<li><strong>301 Moved Permanently</strong> 永久性重定向，表示请求的资源已被分配了新的URI，之后应使用资源现在所指的URI</li>
+<li><strong>302 Found</strong> 临时性重定向。表示请求的资源已被分配了新的URI，希望用户（本次）能使用新的URI访问。</li>
+<li><strong>303 See Other</strong> 表示由于请求对应的资源存在另一个URI，应使用GET方法重定向获取请求的资源</li>
+<li><strong>304 Not Modified</strong> 表示客户端发送附带条件的请求[插图]时，服务器端允许请求访问资源，但请求未满足条件</li>
+<li><strong>307 Temporary Redirect</strong> 临时重定向。该状态码与302 Found有着相同的含义。会遵照浏览器标准，不会从POST变成GET。</li>
+</ul>
+<h2 id="4XX-客户端错误"><a href="#4XX-客户端错误" class="headerlink" title="4XX 客户端错误"></a>4XX 客户端错误</h2><ul>
+<li><strong>400 Bad Request</strong> 表示请求报文中存在语法错误</li>
+<li><strong>401 Unauthorized</strong> 表示发送的请求需要有通过HTTP认证的认证信息</li>
+<li><strong>403 Forbidden</strong> 表示对请求资源的访问被服务器拒绝了</li>
+<li><strong>404 Not Found</strong> 表示服务器上无法找到请求的资源</li>
+</ul>
+<h2 id="5XX-服务器错误"><a href="#5XX-服务器错误" class="headerlink" title="5XX 服务器错误"></a>5XX 服务器错误</h2><ul>
+<li><strong>500 Internal Server Error</strong> 表示服务器在执行请求时发生了错误</li>
+<li><strong>503 Service Unavailable</strong> 表示服务器暂时处于超负载或正在进行停机维护，无法处理请求</li>
+</ul>
+
+  </div>
+  <div>
+  
+  <div class="post-note note-warning copyright" style="margin-top: 42px">
+    <p><span style="font-weight: bold;">作者：</span><a target="_blank" rel="nofollow noopener noreferrer" href="https://baizuige.github.io/about">白嘴鸽</a></p>
+    <p><span style="font-weight: bold;">文章链接：</span><a target="_blank" rel="nofollow noopener noreferrer" href="https://baizuige.github.io/2021/03/11/%E5%8D%81%E5%9B%9B%E7%A7%8D%E5%85%B7%E6%9C%89%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81/">https://baizuige.github.io/2021/03/11/%E5%8D%81%E5%9B%9B%E7%A7%8D%E5%85%B7%E6%9C%89%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81/</a></p>
+    <p><span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+  </div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  
+  <div class="nav-item-next">
+    <a href="/2021/03/09/Ajax/" class="nav-link">
+      <div>
+        <div class="nav-label">下一篇</div>
+        
+        <div class="nav-title">Ajax </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
+
+<div class="card card-content comment-card" style="margin-top: 16px;">
+  <div class="comment-card-title">评论</div>
+  
+</div>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2XX-%E6%88%90%E5%8A%9F"><span class="toc-text">2XX 成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3XX-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">3XX 重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4XX-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF"><span class="toc-text">4XX 客户端错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5XX-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF"><span class="toc-text">5XX 服务器错误</span></a></li></ol>
 </div></main>
           <aside class="left-column">
             
@@ -258,6 +356,13 @@
             <div class="sticky-tablet">
   
   
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2XX-%E6%88%90%E5%8A%9F"><span class="toc-text">2XX 成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3XX-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">3XX 重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4XX-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF"><span class="toc-text">4XX 客户端错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5XX-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF"><span class="toc-text">5XX 服务器错误</span></a></li></ol>
+    </div>
+  </article>
+  
   
   <article class="card card-content categories-widget">
     <div class="categories-card">
@@ -301,54 +406,16 @@
   </article>
   
   
-  <article class="card card-content widescreen-archive archive-widget">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a href="/archives/2021" class="archive-card-list-item">
-          2021
-          <span class="archive-card-list-item-badge">6</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
-  
 </div>
           </aside>
           <aside class="right-column">
             <div class="sticky-widescreen">
   
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>目录</div>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2XX-%E6%88%90%E5%8A%9F"><span class="toc-text">2XX 成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3XX-%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">3XX 重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4XX-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF"><span class="toc-text">4XX 客户端错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5XX-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF"><span class="toc-text">5XX 服务器错误</span></a></li></ol>
+  </article>
   
   
   <article class="card card-content">
@@ -380,49 +447,6 @@
 </div>
   </article>
   
-  
-  <article class="card card-content">
-    <div class="archive-card">
-  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>归档</div>
-  <div class="archive-card-list">
-    
-    
-    
-      
-        
-        
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-      
-        
-      
-    
-    
-      <a href="/archives/2021" class="archive-card-list-item">
-          2021
-          <span class="archive-card-list-item-badge">6</span>
-      </a>
-    
-  </div>
-</div>
-  </article>
   
 </div>
           </aside>
@@ -497,6 +521,29 @@
 
   
   
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('aria-label', 'illustration');
+      wrapper.style.cssText = 'width: 100%; display: flex; justify-content: center;';
+      if (img[i].alt) wrapper.dataset.caption = img[i].alt;
+      wrapper.dataset.nolink = true;
+      img[i].before(wrapper);
+      wrapper.append(img[i]);
+      var divWrap = document.createElement('div');
+      divWrap.classList.add('gallery');
+      wrapper.before(divWrap);
+      divWrap.append(wrapper);
+    }
+    baguetteBox.run('.gallery');
+  }
+</script>
+<script>loadScript("/js/lib/lightbox/baguetteBox.min.js", addImgLayout)</script>
   
   
   
