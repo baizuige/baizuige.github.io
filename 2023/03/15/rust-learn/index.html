@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="白嘴鸽">
+    
+    <title>
+        
+            【转载】Rust 大佬给初学者的学习建议 |
+        
+        白嘴鸽的个人网站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/avatar.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/font/css/brands.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066cc","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg","avatar":"/images/avatar.jpg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg.svg","description":null,"font_color":null,"hitokoto":true},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["炼气","筑基","结丹","元婴","化神"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"center","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               白嘴鸽的个人网站
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">【转载】Rust 大佬给初学者的学习建议</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">白嘴鸽</span>
+                            
+                                <span class="author-label">炼气</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2023-03-15 23:31:19</span>
+        <span class="mobile">2023-03-15 23:31</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2023-03-15 15:36:05</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Rust/">Rust</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>14 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>当我开始学习 Rust 的时候，我犯了一个错误，那就是先读<a class="link"   target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/title-page.html" >《The Rust Programming Language》<i class="fas fa-external-link-alt"></i></a>。虽然这是一本非常好的资料，但让新手一开始就阅读这本 20 个章节的书籍，简直令人望而生畏，大多数人还没开始就放弃了。没有人会让一个刚开始学习 JavaScript 或者 Python 的人去阅读一本 20 个章节的书籍。Rust 学习曲线非常陡峭的，但只要循序渐进的学习一定也能学有所成。</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>如果你是一个完完全全的 Rust 小白，想要在一天中尽可能多的学习 Rust，那我推荐你去阅读 fasterthanlime 的<a class="link"   target="_blank" rel="noopener" href="https://fasterthanli.me/articles/a-half-hour-to-learn-rust" >《半小时快速了解 Rust》<i class="fas fa-external-link-alt"></i></a>，然后完成 <a class="link"   target="_blank" rel="noopener" href="https://github.com/rust-lang/rustlings" >Rustlings<i class="fas fa-external-link-alt"></i></a> 项目中的练习。</p>
+<p>如果你已经学过 Rust 的基本语法，你可以试着做一下 Exercism.io 网站上的 <a class="link"   target="_blank" rel="noopener" href="https://exercism.org/tracks/rust" >Rust<i class="fas fa-external-link-alt"></i></a> 部分。如果你遇到了问题，你可以在 Google 或者 StackOverflow 上寻求帮助。我推荐你花点时间来简单的阅读和浏览一下<a class="link"   target="_blank" rel="noopener" href="https://doc.rust-lang.org/std/" >《Rust Standard Library Docs》<i class="fas fa-external-link-alt"></i></a>，它是一个很棒的学习资料，里面有一些简单且实用例子去帮助你更好的使用 Rust 的标准库。<a class="link"   target="_blank" rel="noopener" href="https://doc.rust-lang.org/rust-by-example/" >《Rust by Example》<i class="fas fa-external-link-alt"></i></a>也是一本高质量的参考资料，你可以通过他快速的学习 Rust 的语法和特性。如果你想要更深入的理解 Rust 的某一个概念，那么我推荐你在<a class="link"   target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/title-page.html" >《The Rust Programming Language》<i class="fas fa-external-link-alt"></i></a>这本书中寻找相关的章节去阅读。尤其推荐在 Exercism.io 上进行练习。在完成每个题目之后，你可以查看其他所有人的题解，可以按点赞数排序来找到通俗易懂并且巧妙的题解。这是一种很棒的学习方式。</p>
+<p>此时，你可能已经是一个高级的初学者，能够找到属于自己的学习路线。但，如果你还需要更多的指导并想要尝试用 Rust 来写一些简单的程序，我推荐你试一着做一下 <a class="link"   target="_blank" rel="noopener" href="https://adventofcode.com/2018" >Advent of Code 2018 Calendar<i class="fas fa-external-link-alt"></i></a> 上的练习。为什么推荐你做 2018 年的题目呢？因为当你做完了这个练习，你可以和 BurntSushi 提供的答案（ <a class="link"   target="_blank" rel="noopener" href="https://github.com/BurntSushi/advent-of-code" >BurntSushi’s Advent of Code 2018 Rust solutions<i class="fas fa-external-link-alt"></i></a>）进行对比。BurntSushi 写的 Rust 代码整洁、可读性强、通俗易懂。阅读一个有经验的 Rustacean 的代码将会使你受益无穷。</p>
+<p>现在可以退出了，文章最精彩的部分已经结束了。</p>
+<h2 id="Rust-练习场评测"><a href="#Rust-练习场评测" class="headerlink" title="Rust 练习场评测"></a>Rust 练习场评测</h2><p><em>别名：适合 Rust 新人的免费练习场评测</em></p>
+<p>大多数的练习场都不是专门用于练习 Rust 的，但都可以用于学习和练习 Rust。某些练习场还明确的表示可以提交 Rust 代码，并支持指定 Rust 版本。</p>
+<p>下面的练习场是按照<strong>从最坏到最好</strong>进行排序的。</p>
+<h3 id="HackerRank"><a href="#HackerRank" class="headerlink" title="HackerRank"></a><a class="link"   target="_blank" rel="noopener" href="https://www.hackerrank.com/" >HackerRank<i class="fas fa-external-link-alt"></i></a></h3><p>虽然 HackerRank 支持 Rust 语言，但大多数题目并不能提交题解。当我上传题解的时候被直接拒绝了。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/assets/hackerrank-more-like-failrank.png"><img  
+                     lazyload
+                     alt="image"
+                     data-src="https://github.com/pretzelhammer/rust-blog/raw/master/assets/hackerrank-more-like-failrank.png"
+                      alt="img"
+                ></a></p>
+<p>迷惑。我能浏览其他用户上传的 Rust 题解，按道理说，我也可以上传 Rust 题解。我尝试在 Google 上搜索这个问题，并没有找到有用的信息。我没办法将 HackerRank 和其他网站对比，因此我只想告诉你，别像我这样浪费时间，试试其他网站吧。</p>
+<h3 id="欧拉计划（Project-Euler）"><a href="#欧拉计划（Project-Euler）" class="headerlink" title="欧拉计划（Project Euler）"></a><a class="link"   target="_blank" rel="noopener" href="https://projecteuler.net/" >欧拉计划（Project Euler）<i class="fas fa-external-link-alt"></i></a></h3><p>我是从 2012 年开始学习编程的，当时我常常听到“如果你想要快速学习一门编程语言，来做几个 Project Euler 的题目吧！”，这在当时是个不错的建议，因为当时没有其他更好的选择。但在我看来，Project Euler 和编程关系不大。Project Euler 的题目大多是数学问题，而不是编程问题。这些题目需要大量的数学推导才能做出来，相比之下，所需要的编程能力是微不足道的。我不推荐你在 Project Euler 上学习 Rust，除非你数学很强或对这个网站有一些情结。</p>
+<h3 id="力扣（LeetCode）"><a href="#力扣（LeetCode）" class="headerlink" title="力扣（LeetCode）"></a><a class="link"   target="_blank" rel="noopener" href="https://leetcode.com/problemset/all/" >力扣（LeetCode）<i class="fas fa-external-link-alt"></i></a></h3><p>力扣上支持使用 Rust 来编写题解。力扣上的每个题目，你都会得到一个模板，模板通常包含一个没有被实现函数，你需要实现它并使其完成题目要求的功能。对于某个比较复杂的问题，模板可能会包含一些 struct 结构体和 impl 代码块、几个未被实现的方法。不幸的是，这些模板不是由人工撰写的，而是由机器自动生成的，这会导致你写出许多不规范 Rust 代码。让我们来对比一下力扣生成的 Rust 代码和优雅的 Rust 代码</p>
+<table>
+<thead>
+<tr>
+<th>力扣生成的 Rust 代码</th>
+<th>优雅的 Rust 代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>使用 <code>Option&lt;Rc&lt;RefCell&lt;Node&gt;&gt;&gt;</code> 来表示链表</td>
+<td>使用 <code>Option&lt;Rc&lt;RefCell&lt;Node&gt;&gt;&gt;</code> 来表示链表太复杂。<code>Option&lt;Box&lt;Node&gt;&gt;</code> 同样能表示链表，并且使用起来更简单。</td>
+</tr>
+<tr>
+<td>insert 方法需要改变 self，但生成的代码依然使用不可改变的借用。例如：<code>fn insert(&amp;self, val: i32)</code></td>
+<td>将 self 需要改成可变借用。例如：<code>fn insert(&amp;mut self, val: i32)</code></td>
+</tr>
+<tr>
+<td>即使程序不会使用负数，依然将所有的数字都声明为 32 位的整型。例如：<code>fn nth_fib(n: i32) -&gt; i32</code></td>
+<td>如果程序不使用负数，我们应该使用无符号整数。例如：<code>fn nth_fib(n: u32) -&gt; u32</code></td>
+</tr>
+<tr>
+<td>即使不需要获得参数的所有权，依然，。例如：<code>fn sum(nums: Vec&lt;i32&gt;) -&gt; i32</code></td>
+<td>如果不需要参数的所有权，那么应该使用借用。例如：<code>fn sum(nums: &amp;[i32]) -&gt; i32</code></td>
+</tr>
+</tbody></table>
+<p>在力扣上练习 Rust 的问题：</p>
+<ul>
+<li>力扣不允许你在做题时引入第三方的依赖。对于大多数语言来说，我认为这是合理的，但 Rust 的标准库非常小，甚至不支持正则表达式，使用 Rust 来做复杂字符串解析意义不大。由于其他语言的标准库自带正则表达式，所以做起来很简单。</li>
+<li>所有的并发类问题，都不能提交题解。无法理解！安全且高效的并发是 Rust 的一大亮点。</li>
+<li>在做完题目后，你能在问题的评论区查看其他用户的题解（许多用户喜欢讲题解发布在评论区），但由于 Rust 太小众，有时你会找不到 Rust 的题解。</li>
+</ul>
+<p>力扣的常见问题：</p>
+<ul>
+<li>力扣上有大量低质量的题目。虽然用户可以选择喜欢或是不喜欢，但题目不会被删除，即使这个题目被绝大多数讨厌。我看过许多 100+ 投票的问题，其中 80% 都是不喜欢，我不理解为什么还要保留这些题目。</li>
+<li>题目的难度等级不准确。力扣上的题目共有三个难度等级，分别是简单、中等、困难，但有很多简单题的解题率比难题更低。</li>
+<li>不是所有的题目都能用任意语言提交。你没办法直观的判断题目支持哪些语言。例如，所有关于图的题目都不支持使用 Rust 提交。</li>
+</ul>
+<p>力扣的优点：</p>
+<ul>
+<li>提交的题解会使用一组未知的数据来进行测试，如果程序在某个特殊数据出错了，它会把这个特殊数据显示给你，帮助你完善题解。</li>
+<li>生成的所有 Rust 代码都符合 rustfmt 格式规范。</li>
+</ul>
+<h3 id="CodeWars"><a href="#CodeWars" class="headerlink" title="CodeWars"></a><a class="link"   target="_blank" rel="noopener" href="https://www.codewars.com/join?language=rust" >CodeWars<i class="fas fa-external-link-alt"></i></a></h3><p>Codewars 这个名字经常被误解，这里并没有竞赛。Codewar 的题目没有时间限制，也不会用你的执行速度和内存使用情况来评价你的题解。值得注意的是，没有任何人和你一决高下并不是什么坏事。</p>
+<p>Codewars 支持使用 Rust 来编写题解。类似力扣，Codewars 上的每个题目，你都会得到一个模板，模板通常会包含一个没有被实现函数，你需要实现它并使其完成题目要求的功能。这些模板是由人工撰写的，不是所有撰写模板的人都擅长 Rust，所以你可能偶然会碰到糟糕的 Rust 题目。例如：</p>
+<table>
+<thead>
+<tr>
+<th>Codewars 的模板</th>
+<th>优雅的 Rust 代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有时不遵循 rustfmt 格式规范，例如：<code>fn makeUppercase(s:&amp;str)-&gt;String</code></td>
+<td>应该尽量遵循 rustfmt 格式规范的写法，例如：<code>fn make_uppercase(s:&amp;str)-&gt;String</code></td>
+</tr>
+<tr>
+<td>即使程序不会使用负数，依然将所有的数字都声明为 32 位的整型。例如：<code>fn nth_fib(n: i32) -&gt; i32</code></td>
+<td>如果程序没有负数，我们应该使用无符号整数。例如：<code>fn nth_fib(n: u32) -&gt; u32</code></td>
+</tr>
+<tr>
+<td>当程序需要将 <code>-1</code> 作为返回结果时，例如：<code>fn get_index(needle:i32, haystack: &amp;[i32])-&gt;i32</code></td>
+<td>应该将返回类型包装成 <code>Option</code> 类型。 例如：<code>fn get_index(needle:i32, haystack: &amp;[i32]) -&gt; Option&lt;usize&gt;</code></td>
+</tr>
+<tr>
+<td>有时不充分利用解引用强制转换。例如：<code>fn do_stuff(s: &amp;String, list: &amp;Vec&lt;i32&gt;)</code></td>
+<td>充分利用解引用强制转换。例如：<code>fn do_stuff(s: &amp;str, list: &amp;[i32])</code></td>
+</tr>
+</tbody></table>
+<p>上面的问题只是偶然会碰到，因为撰写模板的人的技能水品不同。相比于力扣，这是一个很大的进步，力扣上的 Rust 题目普遍都比较糟糕。在 Codewars 上的 Rust 学习者整体趋向于经验不足，因为我经常在高赞题解中看见非常普通的代码。例如：</p>
+<table>
+<thead>
+<tr>
+<th>Codewars 的高赞题解</th>
+<th>优雅的 Rust 写法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有时在函数末尾使用 return。例如：<code>return result;</code></td>
+<td>代码块可以被作为表达式，函数末尾的 return 通常省略不写。例如：<code>result</code></td>
+</tr>
+<tr>
+<td>总是使用紧凑的格式来让题解显得更简洁。</td>
+<td>应该遵循 rustfmt 格式规范</td>
+</tr>
+<tr>
+<td>有时调用不必要的函数。例如：<code>str_slice.to_string().chars()</code></td>
+<td>如果不需要，就不调用。例如：<code>str_slice.chars()</code></td>
+</tr>
+<tr>
+<td>总是使用迭代器来编写题解，忽视了其他方面的问题。</td>
+<td>迭代器很好用，也很常用。但如果你把 15 个迭代器写在一行，或是将迭代器多层嵌套在一起，你应该考虑重构一些函数。</td>
+</tr>
+</tbody></table>
+<p>上面的问题也只是偶然会碰到。有经验的 Rust 开发者能很轻松的发现这些问题，但大部分的 Rust 初学者并不清楚它们正在学习不规范的代码。</p>
+<p>Codewars 在 Rust 方面的其他问题：</p>
+<ul>
+<li>Rust 的题目非常少。这个网站一共 9000 多个题目，但只有 300 个支持使用 Rust 提交题解。</li>
+</ul>
+<p>Codewars 的常见问题：</p>
+<ul>
+<li>当题目提交后，系统会使用一组未知的数据来测试你的题解。如果测试没有全部通过，系统并不会告诉你哪个数据出现问题。如果边界值没有在题目描述中清楚的交代，这会让人非常恼火。</li>
+</ul>
+<p>Codewars 的优点：</p>
+<ul>
+<li>Codewars 有一个很小的 Rust 第三方依赖库列表，你可以用这些依赖库来解决问题。支持的第三方依赖库有：<code>rand</code>、<code>chrono</code>、<code>regex</code>、<code>serde</code>、<code>itertools</code>、<code>lazy_static</code>，它们能让 Rust 更接近其他语言。</li>
+<li>你可以直接筛选出支持 Rust 的语言。</li>
+<li>题解被提交后，会被自动发布到答案区。你也可以查看其他人的题解，并对其进行投票。你可以按点赞数对题解进行排序，前面的题解通常都是简单而高效的，但有时也会不符合规范。</li>
+<li>题目的难度等级非常准确。Codewars 并不是像力扣一样将问题从易到难分为三个阶段（简单、中等、困难），而是将难度分为八个等级，它们由易到难分别是：8kyu、7kyu、6kyu、5kyu、4kyu、3kyu、2kyu、1kyu。在 8kyu 到 4 kyu 之间，我共计完成了 60 个题目，每一层难度都比只上一层难一点，非常适合训练。</li>
+</ul>
+<h3 id="Advent-of-Code"><a href="#Advent-of-Code" class="headerlink" title="Advent of Code"></a><a class="link"   target="_blank" rel="noopener" href="https://adventofcode.com/" >Advent of Code<i class="fas fa-external-link-alt"></i></a></h3><p>Advent of Code（简称 AoC） 和编程语言完全没有关系。HackerRank、LeetCode、CodeWars 对 Rust 的支持并不好，相比之下，使用 AoC 可能效果更好。 在我在看，AoC 的题目是有趣的、多样化的、高质量的。</p>
+<p>AoC 的常见问题：</p>
+<ul>
+<li>当你完成练习后，没办法看到其他人的题解，并且无法判断在 Google 上搜索的题解质量。</li>
+</ul>
+<p>为了解决上面的问题，我推荐去做 2018 年的题目，然后将你的题解和 BurntSushi 提供的答案（ <a class="link"   target="_blank" rel="noopener" href="https://github.com/BurntSushi/advent-of-code" >BurntSushi’s Advent of Code 2018 Rust solutions<i class="fas fa-external-link-alt"></i></a>）进行对比。BurntSushi 写的 Rust 代码整洁、可读性强、通俗易懂。如果你想要完成 2019 年的题目，我推荐参考 bcmyers 的题解（<a class="link"   target="_blank" rel="noopener" href="https://github.com/bcmyers/aoc2019" >bcmyers’ AoC 2019 Rust solutions<i class="fas fa-external-link-alt"></i></a>），bcmyers 还在 Youtube 上制作了一个<a class="link"   target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLQXBtq4j4Ozkx3r4eoMstdkkOG98qpBfg" > Youtube 播放列表<i class="fas fa-external-link-alt"></i></a>来讲解这些题目，他很好的解释了他的思考过程以及他为什么的代码要做这些事情。</p>
+<h3 id="Rustlings"><a href="#Rustlings" class="headerlink" title="Rustlings"></a><a class="link"   target="_blank" rel="noopener" href="https://github.com/rust-lang/rustlings" >Rustlings<i class="fas fa-external-link-alt"></i></a></h3><p>极力推荐 Rustlings，因为它太棒了。这是一套能教会你 Rust 常规用法的练习。</p>
+<p>如果你是一个完完全全的 Rust 小白，你必须试试 <a class="link"   target="_blank" rel="noopener" href="https://github.com/rust-lang/rustlings" >Rustlings<i class="fas fa-external-link-alt"></i></a>。不过，我极力推荐你先阅读 fasterthanlime 的<a class="link"   target="_blank" rel="noopener" href="https://fasterthanli.me/blog/2020/a-half-hour-to-learn-rust/" >《半小时快速了解 Rust》<i class="fas fa-external-link-alt"></i></a>，它会帮助你迅速了解很多的 Rust 语法和概念。</p>
+<p>Rustlings 的一点小缺陷：在“错误处理”（Error handling）和“类型转换”（Type conversions）部分突然难度飙升，很多人在这不知所措。</p>
+<p>Rustlings 太短了，这并不是在批评它，Rustlings 设计的目的就是简单快速的介绍 Rust。但它写得太好了，我希望这样的内容能再多一点。</p>
+<h3 id="Exercism"><a href="#Exercism" class="headerlink" title="Exercism"></a><a class="link"   target="_blank" rel="noopener" href="https://exercism.org/tracks/rust" >Exercism<i class="fas fa-external-link-alt"></i></a></h3><p>Exercism 有一套 Rust 的练习集，大致按主题和难度系数进行排序。虽然这套 Rust 的练习集类似于其他练习集，但所有的练习题都是由经验丰富的 Rustacean 来改写的，不会遇到在 LeetCode 或 Codewars 上的问题。上面由很多 Rust 的经典问题，实现一个标准库中的 Trait，或是写一个 Macro，或是使用多线程写一个并发问题，或是使用 unsafe 编写 Rust 代码。Exercism 是仅次于 Rustlings 的 Rust 学习资料。Rustlings 被放在 Exercism 之上，仅仅是因为 Rustlings 可以在一个晚上完成，而Exercism 的 Rust 练习集需要花费至少一个月。</p>
+<p>在 Exercism 上练习 Rust 的问题：</p>
+<ul>
+<li>不能使用“指导模式”（Mentored mode）。因为网站上大部分的 Rust 导师都并不活跃，所以最好使用“练习模式”（Practice mode）</li>
+<li>一共有 92 个练习题，但其中很大一部分不会教你任何新知识，从中砍掉 20 个左右的练习题，可以让内容更紧凑一点。</li>
+</ul>
+<p>Exercism 的优点：</p>
+<ul>
+<li>所有的练习题都是由经验丰富的 Rustacean 来改写的。</li>
+<li>内容包括 Rust 的习惯用法、设计模式、语言特性。</li>
+<li>由易到难，难度等级准确。</li>
+<li>你可以在题解中引用任何第三方依赖库。</li>
+<li>所有的测试案例都是公开的，如果测试样例不通过，你可以知道为什么没有通过。</li>
+<li>提交题解之后，你可以查看别人的题解，并且题解可以按质量来排序。</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>同[摘要部分](<a class="link"   target="_blank" rel="noopener" href="https://github.com/rustlang-cn/Rustt/blob/main/Articles/[2022-04-02]" >https://github.com/rustlang-cn/Rustt/blob/main/Articles/[2022-04-02]<i class="fas fa-external-link-alt"></i></a> Rust 大佬给初学者的学习建议.md#摘要)。</p>
+<h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>可以在下面这些地方讨论本文：</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/learnrust/comments/ggj8tf/learning_rust_in_2020/" >learnrust subreddit<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://users.rust-lang.org/t/blog-post-learning-rust-in-2020/42373" >official Rust users forum<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://twitter.com/pretzelhammer/status/1259897499122360322" >Twitter<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.reddit.com/r/rust/comments/gie64f/learning_rust_in_2020/" >rust subreddit<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=23160975" >Hackernews<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/discussions" >Github<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><p>通过这些渠道获取最新消息</p>
+<ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://twitter.com/pretzelhammer" >Following pretzelhammer on Twitter<i class="fas fa-external-link-alt"></i></a> or</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/releases.atom" >Subscribing to this repo’s release RSS feed<i class="fas fa-external-link-alt"></i></a> or</li>
+<li>Watching this repo’s releases (click Watch -&gt; click Custom -&gt; select Releases -&gt; click Apply)</li>
+</ul>
+<h2 id="延申阅读"><a href="#延申阅读" class="headerlink" title="延申阅读"></a>延申阅读</h2><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md" >Common Rust Lifetime Misconceptions<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/sizedness-in-rust.md" >Sizedness in Rust<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md" >Tour of Rust’s Standard Library Traits<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/restful-api-in-sync-and-async-rust.md" >RESTful API in Sync &amp; Async Rust<i class="fas fa-external-link-alt"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/too-many-brainfuck-compilers.md" >Learn Assembly with Entirely Too Many Brainfuck Compilers<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<blockquote>
+<p>原文链接: <a class="link"   target="_blank" rel="noopener" href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/learning-rust-in-2020.md" >https://github.com/pretzelhammer/rust-blog/blob/master/posts/learning-rust-in-2020.md<i class="fas fa-external-link-alt"></i></a><br>翻译：<a class="link"   target="_blank" rel="noopener" href="https://github.com/asur4s" >Asura<i class="fas fa-external-link-alt"></i></a><br>选题：<a class="link"   target="_blank" rel="noopener" href="https://github.com/asur4s" >Asura<i class="fas fa-external-link-alt"></i></a><br>本文由 <a class="link"   target="_blank" rel="noopener" href="https://rustt.org/" >Rustt<i class="fas fa-external-link-alt"></i></a> 翻译，<a class="link"   target="_blank" rel="noopener" href="https://studyrust.org/" >StudyRust<i class="fas fa-external-link-alt"></i></a> 荣誉推出</p>
+</blockquote>
+
+            </div>
+
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Rust/">#Rust</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2023/03/09/Hexo-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">【转载】Hexo 自动部署</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">2.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rust-%E7%BB%83%E4%B9%A0%E5%9C%BA%E8%AF%84%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">Rust 练习场评测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HackerRank"><span class="nav-number">3.1.</span> <span class="nav-text">HackerRank</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E8%AE%A1%E5%88%92%EF%BC%88Project-Euler%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">欧拉计划（Project Euler）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9B%E6%89%A3%EF%BC%88LeetCode%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">力扣（LeetCode）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CodeWars"><span class="nav-number">3.4.</span> <span class="nav-text">CodeWars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advent-of-Code"><span class="nav-number">3.5.</span> <span class="nav-text">Advent of Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rustlings"><span class="nav-number">3.6.</span> <span class="nav-text">Rustlings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercism"><span class="nav-number">3.7.</span> <span class="nav-text">Exercism</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A8%E8%AE%BA"><span class="nav-number">5.</span> <span class="nav-text">讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E7%9F%A5"><span class="nav-number">6.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E7%94%B3%E9%98%85%E8%AF%BB"><span class="nav-number">7.</span> <span class="nav-text">延申阅读</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2023</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">白嘴鸽</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+            <div class="deploy-info info-item">
+                
+                    本站由 <span class="tooltip" data-content="GitHub Pages"><img src="/images/deploy-provider/github.png"></span> 提供部署服务
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/code-block.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/post-helper.js"></script>
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/anime.min.js"></script>
+        
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/toc.js"></script>
+        
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.6.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
