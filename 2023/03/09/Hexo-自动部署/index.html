@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="白嘴鸽">
+    
+    <title>
+        
+            【转载】Hexo 自动部署 |
+        
+        白嘴鸽的个人网站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/avatar.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"白嘴鸽的个人网站","author":"白嘴鸽","avatar":"/images/avatar.jpg","logo":"/images/avatar.jpg","favicon":"/images/avatar.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","links":"/links","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":null,"hitokoto":true},"social_contact":{"enable":true,"links":{"github":"https://github.com/baizuige","email":"baizuige@gmali.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2023,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":true,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"icons":{"LeetCode":{"svg":"<svg t=\"1713519306161\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"1524\" width=\"200\" height=\"200\"><path d=\"M686.969238 765.086476l-115.039501 111.200586c-19.877051 19.919706-47.389279 28.237356-77.759367 28.237357s-57.882315-8.31765-77.802021-28.237357l-184.779799-186.102093c-19.919706-19.919706-29.943541-49.052809-29.943541-79.465551s10.023835-57.882315 29.943541-77.80202l184.225289-186.827222c19.919706-19.919706 47.986444-27.512228 78.356531-27.512228s57.882315 8.31765 77.759367 28.237357l115.039501 111.157931c21.924473 21.967128 58.223552 21.199345 81.043772-1.620876 22.82022-22.862875 23.588003-59.161953 1.66353-81.086426l-111.285895-112.43757a215.619088 215.619088 0 0 0-104.290538-57.029222l105.228939-106.764506c22.009782-21.924473 21.241999-58.266206-1.578221-81.086426-22.82022-22.82022-59.161953-23.545348-81.129081-1.620876l-430.811629 430.854284c-41.844179 41.886834-63.725997 99.683839-63.725997 163.580455 0 63.896616 21.881818 123.485115 63.725997 165.28664l185.419619 186.016783c41.844179 41.75887 99.683839 61.934504 163.537801 61.934504s121.693622-21.839164 163.580455-63.725997l111.285895-112.480225c21.924473-21.924473 21.15669-58.223552-1.66353-81.043772s-59.119299-23.588003-81.001117-1.66353z m200.86059-209.860714H455.098741c-29.943541 0-54.171363 25.763389-54.171363 57.413114s24.227822 57.413114 54.171363 57.413114h432.731087c29.900886 0 54.171363-25.763389 54.171363-57.413114s-24.270477-57.413114-54.171363-57.413114z\" p-id=\"1525\"></path></svg>","link":"https://leetcode.cn/u/baizuige/"}}},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/avatar.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               白嘴鸽的个人网站
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        【转载】Hexo 自动部署
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">白嘴鸽</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-03-09 00:09:53</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 09 2025 03:58:11 GMT+0000">2025-01-09 03:58:11</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Hexo/">Hexo</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>我们搭建个人博客的初衷，不就是为了能好好地写文章吗？一切重复且枯燥的工作都应该交给程序去自动完成，尤其是静态博客编译和部署，<strong>我们只需要专注文字</strong>。</p>
+<h2 id="什么是-GitHub-Actions"><a href="#什么是-GitHub-Actions" class="headerlink" title="什么是 GitHub Actions"></a>什么是 GitHub Actions</h2><p>GitHub Actions 是 GitHub 的持续集成服务。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。</p>
+<p>很多操作在不同项目里面是类似的，完全可以共享。GitHub 允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。</p>
+<p>如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions 的组合。这就是 GitHub Actions 最特别的地方。</p>
+<blockquote>
+<p>本例就使用由 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep" >theme-keep<i class="fas fa-external-link-alt"></i></a> 提供的 <code>action</code> <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep/hexo-deploy-github-pages-action" >hexo-deploy-github-pages-action<i class="fas fa-external-link-alt"></i></a> 来自动部署 Hexo。</p>
+</blockquote>
+<h2 id="使用-GitHub-Actions-自动部署的好处"><a href="#使用-GitHub-Actions-自动部署的好处" class="headerlink" title="使用 GitHub Actions 自动部署的好处"></a>使用 GitHub Actions 自动部署的好处</h2><ul>
+<li>可以直接在线编辑 <code>md</code> 文件，立即生效。假设你已发布一篇文章，过几天你在别的电脑上浏览发现有几个明显的错别字，这是完全不能容忍的。但此时你电脑上又没有 <code>hexo + node.js + git</code> 等完整的开发环境，重新配置开发环境明显不现实。如果使用 CI，你可以直接用浏览器访问 GitHub 上的项目仓库，直接编辑带错别字的 <code>md</code> 文章，改完，在线提交，稍等片刻，你的网站就自动更新了。</li>
+<li>如果手动部署，需要先执行 <code>hexo g</code> 编译生成静态文件， 然后推送 <code>public</code> 整个文件夹到 GitHub 上，当后期网站文章、图片较多时候，很多时候连接 GitHub 不是那么顺畅，经常要傻等很长的上传时间。使用 GitHub Actions 自动部署，你只需 <code>push</code> _post 文件里单独的 <code>md</code> 文件即可，其他不用管，效率瞬间高了许多，其中的好处，谁用谁知道。</li>
+<li>使用 GitHub Actions，你还可以一次性将这些静态博客页面部署到多个服务器上，例如：GitHub Pages、Gitee pages、七牛云、阿里云、腾讯云等等。</li>
+<li>…</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>本文以 Hexo + <a class="link"   href="https://link.juejin.cn/?target=https://github.com/XPoet/hexo-theme-keep" >Keep<i class="fas fa-external-link-alt"></i></a> 主题搭建博客为例，教你如何使用 GitHub Actions 将博客自动部署到 GitHub Pages。</p>
+<h3 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h3><p>创建两个 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/new" >GitHub 仓库<i class="fas fa-external-link-alt"></i></a>，一个<strong>公共仓库</strong>和一个<strong>私有仓库</strong>。</p>
+<ul>
+<li><p><strong>私有仓库</strong>用来存储 Hexo 项目源代码。（保证你的重要信息不泄露）</p>
+<p>  <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/97662aefc0a641a0b125ad7b3a5764be~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+</li>
+<li><p><strong>公共仓库</strong>用来存储编译之后的静态页面。</p>
+<p>  <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/63fe06bd84ef40a0885ac06e3fbfa1b4~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+</li>
+</ul>
+<p>本例：</p>
+<ul>
+<li>用私有仓库的 <code>master</code> 分支来存储项目源代码。</li>
+<li>用公共仓库的 <code>gh-pages 分支</code> 来存储静态页面。</li>
+</ul>
+<p>当私有仓库的 <code>master</code> 有内容 <code>push</code> 进来时（例如：主题文件，文章 md 文件、图片等）， 会触发 GitHub Actions 自动编译并部署到公共仓库的 <code>gh-pages 分支</code>。</p>
+<h3 id="创建-GitHub-Token"><a href="#创建-GitHub-Token" class="headerlink" title="创建 GitHub Token"></a>创建 GitHub Token</h3><p>创建一个有 <strong>repo</strong> 和 <strong>workflow</strong> 权限的 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/settings/tokens/new" >GitHub Token<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abb72bed2a5747f4ab3f96cfab732330~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+<p>新生成的 Token 只会显示一次，如有遗失，重新生成即可。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/484558ed11fa4b5e8042c65f398ae6ae~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+<h3 id="创建-repository-secret"><a href="#创建-repository-secret" class="headerlink" title="创建 repository secret"></a>创建 repository secret</h3><p>将上面生成的 Token 添加到私有仓库的 <code>Secrets</code> 里，并将这个新增的 <code>secret</code> 命名为 <code>HEXO_DEPLOY</code> （名字无所谓，看你喜欢）。</p>
+<p>步骤：私有仓库 -&gt; <code>settings</code> -&gt; <code>Secrets</code> -&gt; <code>New repository secret</code>。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ddbabbfdef3a4397ab2e05985e7a4960~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+<blockquote>
+<p>新创建的 secret <code>HEXO_DEPLOY</code> 在 Actions 配置文件要用到，需跟配置文件保持一致！</p>
+</blockquote>
+<h3 id="添加-Actions-配置文件"><a href="#添加-Actions-配置文件" class="headerlink" title="添加 Actions 配置文件"></a>添加 Actions 配置文件</h3><ol>
+<li>在你的 Hexo 项目根目录下创建 <code>.github</code> 文件夹。</li>
+<li>在 <code>.github</code> 文件夹下创建 <code>workflows</code> 文件夹。</li>
+<li>在 <code>workflows</code> 文件夹下创建 <code>hexo-deploy.yml</code> 文件。</li>
+</ol>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5a09e93c2b984c2db29ab7b080a9ea17~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+<p><code>hexo-deploy.yml</code> 文件的内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">deploying</span> <span class="string">Hexo</span> <span class="string">project</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">pages</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># master 分支有 push 行为时就触发这个 action</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build-and-deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@master</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">and</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">theme-keep/hexo-deploy-github-pages-action@master</span> <span class="comment"># 使用专门部署 Hexo 到 GitHub pages 的 action</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">PERSONAL_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY</span> <span class="string">&#125;&#125;</span> <span class="comment"># secret 名</span></span><br><span class="line">          <span class="attr">PUBLISH_REPOSITORY:</span> <span class="string">XPoet/keep-blog</span> <span class="comment"># 公共仓库，格式：GitHub 用户名/仓库名</span></span><br><span class="line">          <span class="attr">BRANCH:</span> <span class="string">gh-pages</span> <span class="comment"># 分支，填 gh-pages 就行</span></span><br><span class="line">          <span class="attr">PUBLISH_DIR:</span> <span class="string">./public</span> <span class="comment"># 部署 public 目录下的文件</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在上面的配置文件中，使用了 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep" >theme-keep<i class="fas fa-external-link-alt"></i></a> 组织封装的 <strong><a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep/hexo-deploy-github-pages-action" >hexo-deploy-github-pages-action<i class="fas fa-external-link-alt"></i></a></strong> ，是一款专门部署 Hexo 博客到 GitHub pages 的 action，欢迎大家 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep/hexo-deploy-github-pages-action" >Star<i class="fas fa-external-link-alt"></i></a> 和 <a class="link"   href="https://link.juejin.cn/?target=https://github.com/theme-keep/hexo-deploy-github-pages-action" >Fork<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>至此，准备工作完毕~</p>
+<h2 id="自动部署触发流程"><a href="#自动部署触发流程" class="headerlink" title="自动部署触发流程"></a>自动部署触发流程</h2><ol>
+<li><p>修改你的 Hexo 博客源代码（例如：增加文章、修改文章、更改主题、修改主题配置文件等等）。</p>
+</li>
+<li><p>把你修改过的 Hexo 项目内容（只提交修改过的那部分内容） <code>push</code> 到 GitHub 私有仓库（本例：keep-site-source）的 <code>master</code> 分支。</p>
+</li>
+<li><p>GitHub Actions 检测到 <code>master</code> 分支有内容 <code>push</code> 进来，会自动执行 action 配置文件的命令，将 Hexo 项目编译成静态页面，然后部署到公共仓库的 <code>gh-pages</code> 分支。</p>
+<blockquote>
+<p><code>gh-pages</code> 分支是 GitHub Pages 服务的固定分支，你只需在 <code>hexo-deploy.yml</code> 文件正确填写，会自动创建。</p>
+</blockquote>
+</li>
+<li><p>在私有仓库的 Actions 可以查看到你配置的 action。 <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74cb195159c246aa96b6f5cd5601891b~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+</li>
+<li><p>通过 GitHub Actions 自动部署成功的效果图： <img  
+                       lazyload
+                       alt="image"
+                       data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2ddcf11fad5b4f67ad7c7051a94e9533~tplv-k3u1fbpfcp-zoom-in-crop-mark:4536:0:0:0.awebp"
+                        alt="image"
+                 ></p>
+</li>
+</ol>
+<h2 id="类似工具"><a href="#类似工具" class="headerlink" title="类似工具"></a>类似工具</h2><p>除了 GitHub Actions，我们还可以使用 <strong>Travis CI</strong> 来实现 Hexo 自动部署，效果是一样的，任君选择。</p>
+<p><strong>教程：<a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6943628312933564452" >使用 Travis CI 自动部署 Hexo 静态博客<i class="fas fa-external-link-alt"></i></a></strong></p>
+<blockquote>
+<p>作者：XPoet<br>链接：<a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6943895271751286821" >https://juejin.cn/post/6943895271751286821<i class="fas fa-external-link-alt"></i></a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Hexo/">Hexo</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/03/15/rust-learn/"
+                                   title="【转载】Rust 大佬给初学者的学习建议"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【转载】Rust 大佬给初学者的学习建议</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/12/18/Vite%20%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"
+                                   title="Vite 相关配置"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Vite 相关配置</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-GitHub-Actions"><span class="nav-number">1.</span> <span class="nav-text">什么是 GitHub Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">2.</span> <span class="nav-text">使用 GitHub Actions 自动部署的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-GitHub-%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">创建 GitHub 仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-GitHub-Token"><span class="nav-number">3.2.</span> <span class="nav-text">创建 GitHub Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-repository-secret"><span class="nav-number">3.3.</span> <span class="nav-text">创建 repository secret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-Actions-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">添加 Actions 配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%A7%A6%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">自动部署触发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E4%BC%BC%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">类似工具</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">白嘴鸽</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-GitHub-Actions"><span class="nav-number">1.</span> <span class="nav-text">什么是 GitHub Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-GitHub-Actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">2.</span> <span class="nav-text">使用 GitHub Actions 自动部署的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-GitHub-%E4%BB%93%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">创建 GitHub 仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-GitHub-Token"><span class="nav-number">3.2.</span> <span class="nav-text">创建 GitHub Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-repository-secret"><span class="nav-number">3.3.</span> <span class="nav-text">创建 repository secret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-Actions-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">添加 Actions 配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E8%A7%A6%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">自动部署触发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E4%BC%BC%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">类似工具</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
